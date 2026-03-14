@@ -1,38 +1,53 @@
-# SMS Spam Classifier: NLP & Ensemble Learning
+**SMS Spam Classifier: NLP & Ensemble Learning**
 
-## Project Overview
-This project focuses on building a robust SMS spam detection system. Using a dataset of over 5,000 messages, I implemented an end-to-end Machine Learning pipeline—from raw text cleaning to advanced model stacking—to accurately distinguish between "Ham" (legitimate) and "Spam" messages.
+**Project Overview**
+This project focuses on building a high-precision SMS spam detection system. Using a dataset of over 5,000 messages, I implemented an end-to-end Machine Learning pipeline—from raw text cleaning to advanced Stacking Ensembles—to accurately distinguish between "Ham" (legitimate) and "Spam" messages.
 
-## Technical Workflow
-The project is divided into four critical stages:
+**Technical Workflow**
+**1. Data Cleaning & Handling Imbalance**
+*Imbalance Handling*: Utilized Class Weights and SMOTE (Synthetic Minority Over-sampling Technique) to ensure the model effectively identifies the minority (Spam) class without bias.
 
-### 1. Data Cleaning & Preparation
-- Handled missing values and removed duplicate entries.
-- Converted target labels into binary format using **Label Encoding**.
-- Dropped irrelevant columns to streamline the dataset.
+*Data Integrity*: Handled missing values and removed duplicate entries to ensure high training quality.
 
-### 2. Exploratory Data Analysis (EDA)
-- **Feature Engineering:** Created new features for the number of characters, words, and sentences in each message.
-- **Statistical Analysis:** Visualized how these features varied across classes, revealing that spam messages typically contain significantly more characters and words.
-- **Correlation Mapping:** Used heatmaps to identify relationships between engineered features.
+**2. Exploratory Data Analysis (EDA) & Feature Engineering**
+*Engineered Features:* Constructed structural columns: num_characters, num_words, and num_sentences.
 
-### 3. Advanced Text Preprocessing
-Standardized raw text for the machine learning models:
-- Lowercasing and Tokenization.
-- Removal of special characters, punctuation, and stopwords.
-- Applied **Porter Stemming** to reduce words to their root forms.
-- **Vectorization:** Compared Bag of Words (CountVectorizer) and **TF-IDF** (Term Frequency-Inverse Document Frequency).
+*Key Insight:* Statistical analysis revealed that while spam messages are generally longer, incorporating these features yielded marginal improvements in the final model compared to semantic text patterns.
 
-### 4. Model Building & Stacking
-- Evaluated multiple baseline models including **Logistic Regression** **Naive Bayes** (Gaussian, Multinomial, Bernoulli).
-- Integrated advanced classifiers: **Random Forest**, **Extra Trees**
-- **Final Architecture:** Implemented a **Stacking Classifier** to combine the strengths of the top-performing models, significantly enhancing overall performance.
+**3. Advanced Text Preprocessing**
+Standardized raw text for machine learning readiness:
 
-##  Key Results & Conclusions
-- **Best Model:** The Stacking Ensemble method outperformed individual baseline classifiers.
-- **Performance Focus:** Prioritized **Precision** and **F1-score** over simple accuracy to ensure legitimate messages are rarely misclassified as spam.
-- **Key Insight:** Character count is a strong predictor of spam, as spam messages are often longer and more descriptive.
+*Cleaning:* Lowercasing, Tokenization, and removal of special characters and stopwords.
 
-## Tech Stack
-- **Language:** Python
-- **Libraries:** NumPy, Pandas, Scikit-learn, NLTK, Matplotlib, Seaborn
+*Stemming:* Applied the Porter Stemmer to reduce words to their root forms.
+
+*Vectorization:* Used TF-IDF (Term Frequency-Inverse Document Frequency) to convert text into a high-dimensional sparse matrix.
+
+**4. Model Building & Hyperparameter Tuning**
+*Optimization:* Used RandomizedSearchCV to conduct an exhaustive search for the best hyperparameters across all models.
+
+*Baseline Models:* Evaluated Logistic Regression, Naive Bayes, SVM, and Random Forest.
+
+**5. Final Architecture: Ensemble & Stacking**
+*The Solution:* Achieved the best performance through a Stacking Classifier and a Voting Ensemble.
+
+*Strategy:* By combining the strengths of top-performing models (including Extra Trees, Naive Bayes, and Random Forest) through a meta-learner, I significantly enhanced the model's reliability.
+
+**Final Performance Results**
+Given the real-world application, I prioritized Precision to ensure legitimate messages are not incorrectly blocked.
+
+**Final Precision:** 0.97
+
+**Final Recall:** 0.87
+
+**Final F1-Score:** 0.92
+
+**Key Conclusions**
+*Ensemble Superiority:* Stacking and Voting methods consistently outperformed individual classifiers.
+
+*High Precision Priority:* Maintaining a 97% Precision ensures that the system is safe for production, as the cost of a "False Positive" is extremely high in communication filters.
+
+**Tech Stack**
+*Language:* Python
+
+*Libraries:* Scikit-learn, NLTK, Pandas, NumPy, Seaborn, Matplotlib
