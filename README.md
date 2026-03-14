@@ -1,9 +1,9 @@
 # SMS Spam Classifier: NLP & Ensemble Learning
 
-## 🚀 Project Overview
+## Project Overview
 This project focuses on building a robust SMS spam detection system. Using a dataset of over 5,000 messages, I implemented an end-to-end Machine Learning pipeline—from raw text cleaning to advanced model stacking—to accurately distinguish between "Ham" (legitimate) and "Spam" messages.
 
-## 🛠️ Technical Workflow
+## Technical Workflow
 The project is divided into four critical stages:
 
 ### 1. Data Cleaning & Preparation
@@ -28,11 +28,11 @@ Standardized raw text for the machine learning models:
 - Integrated advanced classifiers: **Random Forest**, **Extra Trees**
 - **Final Architecture:** Implemented a **Stacking Classifier** to combine the strengths of the top-performing models, significantly enhancing overall performance.
 
-## 📊 Key Results & Conclusions
+##  Key Results & Conclusions
 - **Best Model:** The Stacking Ensemble method outperformed individual baseline classifiers.
 - **Performance Focus:** Prioritized **Precision** and **F1-score** over simple accuracy to ensure legitimate messages are rarely misclassified as spam.
 - **Key Insight:** Character count is a strong predictor of spam, as spam messages are often longer and more descriptive.
 
-## 💻 Tech Stack
+## Tech Stack
 - **Language:** Python
 - **Libraries:** NumPy, Pandas, Scikit-learn, NLTK, Matplotlib, Seaborn
